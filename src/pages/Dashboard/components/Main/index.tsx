@@ -20,7 +20,7 @@ const Main: React.FC = () => {
   return (
     <Flex
       direction={"column"}
-      px={"10px"}
+      px={"40px"}
       width={"full"}
     >
       <Header/>

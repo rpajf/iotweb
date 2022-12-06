@@ -4,7 +4,12 @@ import {
   InfoOutlineIcon,
   CalendarIcon,
 } from "@chakra-ui/icons";
-import {MdHome, MdHistory} from 'react-icons/md'
+
+import { MdHome, MdHistory, MdExitToApp, MdPerson } from "react-icons/md";
+import {TbBooks} from 'react-icons/tb'
+import { LoginData, useAuth } from "../../../../contexts/auth";
+import { useLocation } from "react-router-dom";
+
 import sidebarLogo from "../../../../assets/sidebar-logo.png";
 
 import {
@@ -24,12 +29,22 @@ import {
 } from "@chakra-ui/react";
 
 const Sidebar: React.FC = () => {
-  const [selected, setSelected] = React.useState<boolean>(false)
+  const { Logout } = useAuth();
+  const [selected, setSelected] = React.useState<boolean>(false);
+  const location = useLocation();
+  console.log(location);
 
-  const handleClick = React.useCallback(()=> {
-    setSelected(true)
+  const handleClick = React.useCallback(() => {
+    setSelected(true);
+  }, [selected]);
 
-  },[selected])
+  React.useEffect(() => {
+    if (location.pathname === "/") {
+      setSelected(true);
+    } else {
+      setSelected(false);
+    }
+  }, [selected, location.pathname]);
 
   return (
     <Container
@@ -50,25 +65,14 @@ const Sidebar: React.FC = () => {
         alignItems={"center"}
         bg={"transparent"}
         _hover={{ color: "#D0D840" }}
-        leftIcon={<Icon as={MdHome}/>}
+        leftIcon={<Icon as={MdHome} />}
         _active={{
-          bg: 'transparent',
-          // borderColor: '#bec3c9',
-          borderRadius: '0',
-          color: '#D0D840',
-          borderLeft: '3px solid #D0D840'
-        //   _before:{
-        //     content: `""`,
-        //     position: "absolute",
-        //     // width: "3px",
-        //     // height: "100%",
-        //     borderLeft: '3px solid red',
-        //     bg: "#D0D840",
-        //     opacity: "0.6",
-        // }
+          bg: "transparent",
+          borderRadius: "0",
+          color: "#D0D840",
+          borderLeft: "3px solid #D0D840",
         }}
         color={"#466789"}
-      
         isActive={selected}
         fontWeight={"bold"}
         onClick={handleClick}
@@ -80,9 +84,7 @@ const Sidebar: React.FC = () => {
         alignItems={"center"}
         bg={"transparent"}
         _hover={{ color: "#D0D840" }}
-        // leftIcon={<CalendarIcon />}
-        leftIcon={<Icon as={MdHistory}/>}
-
+        leftIcon={<Icon as={MdHistory} />}
         color={"#466789"}
         fontWeight={"bold"}
       >
@@ -92,7 +94,7 @@ const Sidebar: React.FC = () => {
         display={"flex"}
         bg={"transparent"}
         _hover={{ color: "#D0D840" }}
-        leftIcon={<CalendarIcon />}
+        leftIcon={<Icon as={TbBooks} />}
         alignItems={"center"}
         color={"#466789"}
         fontWeight={"bold"}
@@ -102,7 +104,7 @@ const Sidebar: React.FC = () => {
       <Button
         display={"flex"}
         alignItems={"center"}
-        leftIcon={<CalendarIcon />}
+        leftIcon={<Icon as={MdPerson}/>}
         color={"#466789"}
         bg={"transparent"}
         _hover={{ color: "#D0D840" }}
@@ -114,8 +116,9 @@ const Sidebar: React.FC = () => {
         display={"flex"}
         alignItems={"center"}
         color={"#466789"}
-        leftIcon={<CalendarIcon />}
+        leftIcon={<Icon as={MdExitToApp}/>}
         bg={"transparent"}
+        onClick={Logout}
         _hover={{ color: "#D0D840" }}
         fontWeight={"bold"}
       >

@@ -12,15 +12,18 @@ import {
   TableContainer,
   Flex,
   Box,
+  TableRowProps,
+  TableColumnHeaderProps,
 } from "@chakra-ui/react";
 import api from "../../../../services/api.service";
 
-
-interface ClassOfDay {
+interface TableComponents {
+  thNames?: string[];
+  values?: string[];
 }
 
-const CustomTable2: React.FC = () => {
-  // const [students, setStudents] = React.useState([]);
+const CustomTable2: React.FC<TableComponents> = ({ thNames, values }) => {
+  const [students, setStudents] = React.useState([{}]);
   const [data, setData] = React.useState([]);
 
   // api.get("/events/show/1").then(function (res) {
@@ -55,22 +58,15 @@ const CustomTable2: React.FC = () => {
     <Table size="md">
       <Thead>
         <Tr>
-          <Th>Aluno</Th>
-          <Th>Matrícula</Th>
-          <Th>Disciplina</Th>
-          <Th>Data</Th>
+          {thNames?.map((item) => (
+            <Th>{item}</Th>
+          ))}
         </Tr>
       </Thead>
       <Tbody>
         <Tr>
-          {/* {students?.map(({event_name, user_uid, name,date_ini}) => (
-            <React.Fragment>
-              <Td>{user_name}</Td>
-              <Td>{user_uid}</Td>
-              <Td>{name}</Td>
-              <Td>{date_ini}</Td>
-            </React.Fragment>
-          ))} */}
+          {values?.length === thNames?.length &&
+            values?.map((value) => <Th>{value}</Th>)}
         </Tr>
       </Tbody>
       <Tfoot></Tfoot>

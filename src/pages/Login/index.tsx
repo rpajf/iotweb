@@ -27,6 +27,8 @@ function Login() {
   let navigate = useNavigate();
 
   const handleNav = React.useCallback(()=>navigate('/dashboard'),[])
+  //professorx
+  //matricula 999-999999
   return (
     <Formik
       initialValues={{ login: "", password: "" }}
@@ -41,7 +43,7 @@ function Login() {
             .then(() => {
               actions.setSubmitting(false);
               toast({
-                title: "Credenciamento realizado com sucesso",
+                title: "Login realizado com sucesso",
                 status: "success",
                 duration: 3000,
                 isClosable: true,
@@ -51,7 +53,7 @@ function Login() {
             .catch((err) => {
               actions.setSubmitting(false);
               toast({
-                title: "Ocorreu um problema no credenciamento",
+                title: "Ocorreu um problema no login",
                 description: "Verifique os dados informados e tente novamente",
                 status: "error",
                 duration: 3000,
@@ -107,7 +109,7 @@ function Login() {
                     marginBottom={"4"}
                     isInvalid={form.errors.password && form.touched.password}
                   >
-                    <FormLabel htmlFor="password">Senha:</FormLabel>
+                    <FormLabel htmlFor="password" textTransform={"uppercase"} fontWeight={"bold"}>Senha:</FormLabel>
                     <Input
                       {...field}
                       type={"password"}

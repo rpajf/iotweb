@@ -1,5 +1,5 @@
 import React from "react";
-import { Student } from "../../../../Types";
+
 import {
   Table,
   Thead,
@@ -23,11 +23,18 @@ interface ClassOfDay {
   date_end?: Date;
   description?: string;
 }
+interface Student {
+  participant_name?:string,
+  event_name?: string,
+  data_ini?:string,
+  participant_id?:number
+}
 
 const CustomTable: React.FC = () => {
   // const [students, setStudents] = React.useState([]);
   const [data, setData] = React.useState([]);
-
+  const [student,setStudent] = React.useState<Student>({})
+  const [students, setStudents] = React.useState<Student[]>([]);
   // api.get("/events/show/1").then(function (res) {
   //   // console.log(res);
   //   setStudents(res.data.object_response);
@@ -49,12 +56,32 @@ const CustomTable: React.FC = () => {
       // console.log(res.data.object_response);
       setData(res.data.object_response);
       // setStudents(res.data.object_response);
+      
     });
   }, []);
-  console.log(data);
+  // console.log(data);
+  React.useEffect(() => {
+    if(data){
+      data.map(({participant_name,event_name,participant_id}) => {
+        const rest = [participant_name,event_name, participant_id]
+        // let item = {participant_name,event_name,participant_id}
+        console.log(...rest)
+        // setStudent(item)
+        // setStudents([...rest])
+      })
+      // data.map((item) => {
+      //   // const rest = [participant_name,event_name, participant_id]
+      //   // let item = {participant_name,event_name,participant_id}
+      //   // setStudent(item)
+      //   setStudents([...students,item])
+      // })
+    }
+  },[data]);
+  console.log('dados',data)
   // const students: Student[] = React.useMemo(() => {
 
   // }, []);
+  console.log(students)
 
   return (
     <Table size="md">
@@ -68,14 +95,14 @@ const CustomTable: React.FC = () => {
       </Thead>
       <Tbody>
         <Tr>
-          {/* {students?.map(({event_name, user_uid, name,date_ini}) => (
-            <React.Fragment>
-              <Td>{user_name}</Td>
-              <Td>{user_uid}</Td>
-              <Td>{name}</Td>
-              <Td>{date_ini}</Td>
+          {students?.map((item, key) => (
+            <React.Fragment key={key}>
+              <Td>{item.participant_name}</Td>
+              <Td>{item.participant_id}</Td>
+              <Td>{item.event_name}</Td>
+              <Td>{item.data_ini}</Td>
             </React.Fragment>
-          ))} */}
+          ))}
         </Tr>
       </Tbody>
       <Tfoot></Tfoot>
