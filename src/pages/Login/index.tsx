@@ -20,7 +20,7 @@ import { LoginData, useAuth } from "../../contexts/auth";
 import requiredField from "../../validations/required";
 import logo from '../../assets/logo-default.png'
 import loginBg from '../../assets/login-bg.png'
-
+const matriciula = 999-999999
 function Login() {
   const toast = useToast();
   const context = useAuth();
@@ -33,6 +33,7 @@ function Login() {
     <Formik
       initialValues={{ login: "", password: "" }}
       onSubmit={(values, actions) => {
+        // e.preventDefault();
         setTimeout(async () => {
           const data: LoginData = {
             login: values.login,
@@ -142,9 +143,6 @@ function Login() {
                 Esqueci minha senha <InfoOutlineIcon />{" "}
               </Link>
             </Box>
-            <Button onClick={handleNav} bgColor={"transparent"}>
-              test
-            </Button>
           </Container>
         </Flex>
       )}

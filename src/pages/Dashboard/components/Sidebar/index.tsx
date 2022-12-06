@@ -8,7 +8,7 @@ import {
 import { MdHome, MdHistory, MdExitToApp, MdPerson } from "react-icons/md";
 import {TbBooks} from 'react-icons/tb'
 import { LoginData, useAuth } from "../../../../contexts/auth";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import sidebarLogo from "../../../../assets/sidebar-logo.png";
 
@@ -32,16 +32,28 @@ const Sidebar: React.FC = () => {
   const { Logout } = useAuth();
   const [selected, setSelected] = React.useState<boolean>(false);
   const location = useLocation();
-  console.log(location);
-
+  const navigate = useNavigate()
   const handleClick = React.useCallback(() => {
     setSelected(true);
+    navigate('/')
   }, [selected]);
 
+  const handleClick2 = React.useCallback(() => {
+    setSelected(true);
+    navigate('/subjects/4')
+  }, [selected]);
+  
+  const pathName = window.location.pathname
+  console.log('path', pathName)
   React.useEffect(() => {
     if (location.pathname === "/") {
       setSelected(true);
-    } else {
+    }
+    // else if(location.pathname === "/subjects/4" || location.pathname ==="/subjects/43"){
+    //   setSelected(true);
+
+    // }
+    else {
       setSelected(false);
     }
   }, [selected, location.pathname]);
@@ -53,7 +65,8 @@ const Sidebar: React.FC = () => {
       bgColor={"#0C1D2D"}
       width={"230px"}
       pt={"10px"}
-      height={"100vh"}
+      height={"2000px"}
+      // overflow={"visible"}
       alignSelf={"flex-start"}
       alignItems="start"
     >
@@ -107,6 +120,13 @@ const Sidebar: React.FC = () => {
         leftIcon={<Icon as={MdPerson}/>}
         color={"#466789"}
         bg={"transparent"}
+        _active={{
+          bg: "transparent",
+          borderRadius: "0",
+          color: "#D0D840",
+          borderLeft: "3px solid #D0D840",
+        }}
+
         _hover={{ color: "#D0D840" }}
         fontWeight={"bold"}
       >
@@ -119,6 +139,7 @@ const Sidebar: React.FC = () => {
         leftIcon={<Icon as={MdExitToApp}/>}
         bg={"transparent"}
         onClick={Logout}
+        
         _hover={{ color: "#D0D840" }}
         fontWeight={"bold"}
       >

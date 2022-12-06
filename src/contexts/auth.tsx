@@ -21,26 +21,28 @@ export const AuthProvider = ({ children }: any) => {
   const [token, setToken] = useState<string | null>(null);
   const [user, setUser] = useState<object | null>(null);
 
-  useEffect(() => {
-    async function loadStorageData() {
-      const storagedToken = localStorage.getItem("@App:token");
-      const storagedUser = localStorage.getItem("@App:user");
-      if (storagedToken && storagedUser) {
+  // useEffect(() => {
+  //   async function loadStorageData() {
+  //     const storagedToken = localStorage.getItem("@App:token");
+  //     const storagedUser = localStorage.getItem("@App:user");
+  //     if (storagedToken && storagedUser) {
 
-        setUser(JSON.parse(storagedUser));
-        // api.defaults.headers.common["Authorization"] = `Bearer ${storagedToken}`;
-      }
-    }
-    loadStorageData()
-  }, []);
-
+  //       setUser(JSON.parse(storagedUser));
+  //       // api.defaults.headers.common["Authorization"] = `Bearer ${storagedToken}`;
+  //     }
+  //   }
+  //   loadStorageData()
+  // }, []);
+  console.log( 'getuser',localStorage.getItem("@App:user"))
   async function Login(values: LoginData) {
     const response = await api.post("users/login", values);
     setToken("ok");
     setUser(response.data.object_response);
     localStorage.setItem("@App:token", "ok");
-    localStorage.setItem("@App:user", JSON.stringify(response.data.user));
+    window.localStorage.setItem("@App:token", JSON.stringify("ok"));
+    window.localStorage.setItem("@App:user", JSON.stringify(response.data.object_response));
   }
+const matriciula = 999-999999
 
   function Logout() {
     localStorage.clear()

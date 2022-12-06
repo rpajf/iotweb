@@ -3,6 +3,7 @@ import { AuthProvider, RequireAuth } from "./contexts/auth";
 // import { Home } from "./pages/Home";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import CustomTable2 from "./pages/Dashboard/components/table2";
 
 
 function App() {
@@ -15,6 +16,16 @@ function App() {
             element={
               <RequireAuth>
                 <Dashboard />
+              
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/subjects/:id"
+            element={
+              <RequireAuth>
+                <CustomTable2/>
+              
               </RequireAuth>
             }
           />
