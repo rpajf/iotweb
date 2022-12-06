@@ -107,8 +107,8 @@ const CustomTable2: React.FC = () => {
                 <Tr key={index}>
                 <Td>{participant_name}</Td>
                 <Td>{event_name}</Td>
-                <Td>{exit_date}</Td>
                 <Td>{entry_date}</Td>
+                <Td>{exit_date}</Td>
                 <Td>{presence_status}</Td>
                 </Tr>
           ))}
