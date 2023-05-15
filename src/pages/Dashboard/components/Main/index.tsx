@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../Header";
 import CustomTable from "../CustomTable";
-import CustomTable2 from "../table2";
 import {
   Flex,
   Box,

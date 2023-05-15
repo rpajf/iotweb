@@ -3,7 +3,6 @@ import { AuthProvider, RequireAuth } from './contexts/auth';
 // import { Home } from "./pages/Home";
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import CustomTable2 from './pages/Dashboard/components/table2';
 
 function App() {
   return (
