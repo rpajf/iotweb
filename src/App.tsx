@@ -1,17 +1,16 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthProvider, RequireAuth } from "./contexts/auth";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider, RequireAuth } from './contexts/auth';
 // import { Home } from "./pages/Home";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import CustomTable2 from "./pages/Dashboard/components/table2";
-
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import CustomTable2 from './pages/Dashboard/components/table2';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          <Route
+          {/* <Route
             path="/"
             element={
               <RequireAuth>
@@ -19,8 +18,9 @@ function App() {
               
               </RequireAuth>
             }
-          />
-          <Route
+          /> */}
+          <Route path="/" element={<Dashboard />} />
+          {/* <Route
             path="/subjects/:id"
             element={
               <RequireAuth>
@@ -28,10 +28,9 @@ function App() {
               
               </RequireAuth>
             }
-          />
+          /> */}
           {/* <Route  path="dashboard" element={<Dashboard/>}/> */}
           <Route path="login" element={<Login />} />
-
         </Routes>
       </Router>
     </AuthProvider>
@@ -39,5 +38,3 @@ function App() {
 }
 
 export default App;
-
-
