@@ -3,6 +3,8 @@ import { AuthProvider, RequireAuth } from './contexts/auth';
 // import { Home } from "./pages/Home";
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import More from './pages/More';
+import Final from './pages/Final';
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
             }
           /> */}
           <Route path="/" element={<Dashboard />} />
+          <Route path="/more" element={<More />} />
+          <Route path="/final" element={<Final />} />
+
           {/* <Route
             path="/subjects/:id"
             element={

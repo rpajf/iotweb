@@ -37,7 +37,7 @@ function Login() {
     navigate('/');
   }, []);
   const handleClick3 = React.useCallback(() => {
-    alert('PARABENS VC quase ACERTOU! RECOLHA SEU PREMIO');
+    alert('PARABENS VC quase quase ACERTOU! RECOLHA SEU PREMIO');
     navigate('/');
   }, []);
   return (

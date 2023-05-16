@@ -22,7 +22,7 @@ import requiredField from '../../validations/required';
 import logo from '../../assets/logo-default.png';
 import loginBg from '../../assets/login-bg.png';
 const matriciula = 999 - 999999;
-function Dashboard() {
+function More() {
   // const handleClick = () => {
 
   // }
@@ -33,7 +33,7 @@ function Dashboard() {
     navigate('/');
   }, []);
   const logout = React.useCallback(() => {
-    navigate('login');
+    navigate('/login');
   }, []);
   return (
     <Box
@@ -46,12 +46,7 @@ function Dashboard() {
     >
       <Flex direction={'column'} w={'300px'} h={'250px'}>
       <Text noOfLines={4} color={"#F0CA92"}>
-         Parabens Dra. Denise, recolha o seu premio com a organização, favor falar com o desenvolvedor Raphael portela para mais detalhes 
-         ou  
-         <Text noOfLines={4} fontWeight={600} color={"#fde408"}>
-
-         <a href="/more" color='#6615f153'>clique AQUI</a>
-         </Text>
+        O SEU PRÊMIO <a href="/final">É:</a>
         </Text>
         <Button
           display={'flex'}
@@ -71,4 +66,4 @@ function Dashboard() {
     </Box>
   );
 }
-export default Dashboard;
+export default More;

@@ -14,6 +14,7 @@ import {
   FormErrorMessage,
   useToast,
   Container,
+  Avatar,
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +23,7 @@ import requiredField from '../../validations/required';
 import logo from '../../assets/logo-default.png';
 import loginBg from '../../assets/login-bg.png';
 const matriciula = 999 - 999999;
-function Dashboard() {
+function Final() {
   // const handleClick = () => {
 
   // }
@@ -33,7 +34,7 @@ function Dashboard() {
     navigate('/');
   }, []);
   const logout = React.useCallback(() => {
-    navigate('login');
+    navigate('/login');
   }, []);
   return (
     <Box
@@ -45,14 +46,11 @@ function Dashboard() {
       justifyContent={'center'}
     >
       <Flex direction={'column'} w={'300px'} h={'250px'}>
-      <Text noOfLines={4} color={"#F0CA92"}>
-         Parabens Dra. Denise, recolha o seu premio com a organização, favor falar com o desenvolvedor Raphael portela para mais detalhes 
-         ou  
-         <Text noOfLines={4} fontWeight={600} color={"#fde408"}>
-
-         <a href="/more" color='#6615f153'>clique AQUI</a>
-         </Text>
+        <Text noOfLines={4} color={'#F0CA92'}>
+          um jantar no outback(ainda não fui e tem aquela sensação de estar
+          viajando por ser um lugar novo) ou um restaurante da sua escolha
         </Text>
+        <Avatar icon={<>😄</>} />
         <Button
           display={'flex'}
           alignItems={'center'}
@@ -61,7 +59,7 @@ function Dashboard() {
           bg={'#789389'}
           _hover={{ color: '#D0D840' }}
           color={'pink'}
-          margin={"20px 0 0 0"}
+          margin={'20px 0 0 0'}
           fontWeight={'bold'}
           onClick={logout}
         >
@@ -71,4 +69,4 @@ function Dashboard() {
     </Box>
   );
 }
-export default Dashboard;
+export default Final;
