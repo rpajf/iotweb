@@ -46,11 +46,11 @@ function Dashboard() {
     >
       <Flex direction={'column'} w={'300px'} h={'250px'}>
       <Text noOfLines={4} color={"#F0CA92"}>
-         Parabens Dra. Denise, recolha o seu premio com a organização, favor falar com o desenvolvedor Raphael portela para mais detalhes 
+         Parabens ilustre Dra. Denise Santana, recolha o seu premio com a diretoria
          ou  
          <Text noOfLines={4} fontWeight={600} color={"#fde408"}>
 
-         <a href="/more" color='#6615f153'>clique AQUI</a>
+         <a href="/more" color='#6615f153'>clique AQUI para mais detalhes</a>
          </Text>
         </Text>
         <Button
